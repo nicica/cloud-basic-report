@@ -1,0 +1,56 @@
+services:
+  master1:
+    build: .
+    container_name: master
+    networks:
+      - my_network
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2G
+    ports:
+      - "2220:22"
+    volumes:
+      - shared_volume:/shared
+      - ./ssh_keys:/root/.ssh
+
+  node1:
+    build: .
+    container_name: node1
+    networks:
+      - my_network
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2G
+    ports:
+      - "2221:22"
+    volumes:
+      - shared_volume:/shared
+      - ./ssh_keys:/root/.ssh
+  
+  node2:
+    build: .
+    container_name: node2
+    networks:
+      - my_network
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2G
+    ports:
+      - "2222:22"
+    volumes:
+      - shared_volume:/shared
+      - ./ssh_keys:/root/.ssh
+
+networks:
+  my_network:
+    driver: bridge
+
+volumes:
+  shared_volume:
+    driver: local
