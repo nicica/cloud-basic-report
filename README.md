@@ -1,4 +1,4 @@
-# Assigment report
+# Assignment report
 
 ## Intro
 In this report we walk about how we can set up a small cluaster with either VMs or Docker Container,and in the end we descuss and compare how they did on the performance tests. Both clusters have one **master** and two **worker** nodes. This is their setup:
